@@ -1,0 +1,62 @@
+﻿@model AddComputerDTO
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1> New Computer</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <form method="post">
+            
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Marka</label>
+                    <input type="text" class="form-control" asp-for="MarkName" id="exampleFormControlTextarea1" placeholder="please add Marka here..." />
+                    <span asp-validation-for="MarkName" style="color:darkred"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Model</label>
+                    <input type="text" class="form-control" asp-for="ModelName" id="exampleFormControlInput1" placeholder="please add Model here...">
+                    <span asp-validation-for="ModelName" style="color:darkred"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Count</label>
+                    <input type="number" min="0" class="form-control" id="exampleFormControlInput1" asp-for="InStock" placeholder="please add computer count here...">
+                    <span asp-validation-for="InStock" style="color:darkred"></span>
+                </div>
+         
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Price</label>
+                    <input type="number" min="0" class="form-control" asp-for="Price" id="exampleFormControlInput1" placeholder="please add monitor size here...">
+                    <span asp-validation-for="Price" style="color:darkred"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Size</label>
+                    <select class="form-select" aria-label="Default select example" asp-for="DetailId">
+                        <option selected>Please select size...</option>
+                        @foreach (var item in Model.SizeList)
+                        {
+                            <option value="@item.Id">@item.Size</option>
+                        }
+                       
+
+                     
+                    </select>
+                    <span asp-validation-for="DetailId" style="color:darkred"></span>
+                </div>
+               
+                <div class="text-center">
+                    
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <a asp-action="ComputerList" class="btn btn-success">Back</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+   
+   
+</div>
+

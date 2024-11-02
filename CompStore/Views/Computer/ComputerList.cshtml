@@ -1,0 +1,79 @@
+﻿@model ComputerListDTO
+@{
+    ViewData["Title"] = "CompStore || ComputerList";
+    int num = 0;
+   
+}
+@* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css" />
+
+
+<script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"></script>
+<script src=" https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> *@
+
+<h1>All Computers</h1>
+
+<div class="container">
+    <a asp-action="Create" class="btn btn-success">Add Computer</a>
+    <table id="dataTable" class="table table-striped" style="width:100%">
+        
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Marka</th>
+                <th>Model</th>
+                <th>InStock</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>No</th>
+                <th>Marka</th>
+                <th>Model</th>
+                <th>InStock</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var item in Model.ComputerList)
+            {
+                <tr>
+                    <td>@(num = num + 1)</td>
+                    <td>@item.MarkName</td>
+                    <td>@item.ModelName</td>
+                    <td>@item.InStock</td>
+                    <td>@item.Detail.Size</td>
+                    <td>@item.Price</td>
+                    <td>
+                        <a asp-action="Update" asp-route-Id="@item.Id" class="btn btn-primary">Update</a>
+                        <a asp-action="Delete" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
+                        <a asp-action="Detail" asp-route-Id="@item.Id" class="btn btn-warning">Detail</a>
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+
+    </table>
+</div>
+
+
+<script>
+  
+          
+    $(document).ready(function(){
+        $('#dataTable').DataTable();
+
+    })
+
+   
+       
+</script>
+
